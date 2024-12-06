@@ -22,15 +22,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.camilaendlich.fornow.R
-import com.camilaendlich.fornow.ui.models.ProductModel
+import com.camilaendlich.fornow.extensions.toBrazilianCurrency
+import com.camilaendlich.fornow.models.ProductModel
 import com.camilaendlich.fornow.ui.theme.FORNOWTheme
 import com.camilaendlich.fornow.ui.theme.Primary
 import com.camilaendlich.fornow.ui.theme.Secondary
@@ -78,7 +79,8 @@ fun ProductItemLayout(
                         .offset(y = imageSize/2)
                         .size(imageSize)
                         .clip(shape = CircleShape)
-                        .align(Alignment.BottomCenter)
+                        .align(Alignment.BottomCenter),
+                    contentScale = ContentScale.Crop
                 )
             }
 
@@ -96,7 +98,7 @@ fun ProductItemLayout(
                     overflow = TextOverflow.Ellipsis,
                 )
                 Text(
-                    text = "R$ ${product.price}",
+                    text = product.price.toBrazilianCurrency(),
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400),
                 )

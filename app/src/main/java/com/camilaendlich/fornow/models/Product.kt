@@ -1,4 +1,4 @@
-package com.camilaendlich.fornow.ui.models
+package com.camilaendlich.fornow.models
 
 import androidx.annotation.DrawableRes
 import java.math.BigDecimal
