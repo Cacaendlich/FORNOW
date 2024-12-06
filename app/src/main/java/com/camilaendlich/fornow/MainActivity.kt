@@ -15,7 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.camilaendlich.fornow.sampledata.SampleData
-import com.camilaendlich.fornow.ui.components.ProductSectionLayout
+import com.camilaendlich.fornow.view.ProductSectionLayout
 import com.camilaendlich.fornow.ui.theme.FORNOWTheme
 
 class MainActivity : ComponentActivity() {

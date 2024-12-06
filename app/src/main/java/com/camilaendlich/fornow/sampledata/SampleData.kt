@@ -7,7 +7,7 @@ import java.math.BigDecimal
 class SampleData {
     val samplePromotions = listOf(
         ProductModel(
-            name = "Cheese Burguer",
+            name = "Hamburguer",
             price = BigDecimal("29.99"),
             image = R.drawable.img_burguer
         )
@@ -15,12 +15,12 @@ class SampleData {
 
     val sampleSnacks = listOf(
         ProductModel(
-            name = "Cheese Burguer",
+            name = "Hamburguer",
             price = BigDecimal("29.99"),
             image = R.drawable.img_burguer
         ),
         ProductModel(
-            name = "Fries",
+            name = "Batata Frita",
             price = BigDecimal("15.99"),
             image = R.drawable.img_fries
         ),
@@ -51,7 +51,7 @@ class SampleData {
 
     val sampleDrinks = listOf(
         ProductModel(
-            name = "Cola",
+            name = "Cola Cola",
             price = BigDecimal("6.99"),
             image = R.drawable.img_coca_cola
         ),

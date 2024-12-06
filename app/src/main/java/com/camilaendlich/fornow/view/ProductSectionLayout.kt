@@ -1,4 +1,4 @@
-package com.camilaendlich.fornow.ui.components
+package com.camilaendlich.fornow.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
