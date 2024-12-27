@@ -1,4 +1,4 @@
-package com.camilaendlich.fornow.view
+package com.camilaendlich.fornow.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.camilaendlich.fornow.R
 import com.camilaendlich.fornow.extensions.toBrazilianCurrency
-import com.camilaendlich.fornow.models.ProductModel
+import com.camilaendlich.fornow.models.Product
 import com.camilaendlich.fornow.ui.theme.FORNOWTheme
 import com.camilaendlich.fornow.ui.theme.Primary
 import com.camilaendlich.fornow.ui.theme.Secondary
@@ -39,10 +39,10 @@ import java.math.BigDecimal
 
 @Composable
 fun ProductItemLayout(
-    product: ProductModel = ProductModel(
+    product: Product = Product(
         name = "Cheese Burguer",
         price = BigDecimal("14.99"),
-        image = R.drawable.ic_launcher_background
+        image = ""
     )
 ) {
     Surface(
@@ -73,7 +73,8 @@ fun ProductItemLayout(
             ) {
 
                 Image(
-                    painter = painterResource(product.image),
+                    // TODO: ajustar imagem do produto
+                    painter = painterResource(R.drawable.ic_launcher_background),
                     contentDescription = "Imagem do produto",
                     modifier = Modifier
                         .offset(y = imageSize/2)

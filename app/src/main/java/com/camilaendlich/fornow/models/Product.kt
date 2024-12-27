@@ -1,10 +1,9 @@
 package com.camilaendlich.fornow.models
 
-import androidx.annotation.DrawableRes
 import java.math.BigDecimal
 
-class ProductModel (
+class Product (
     val name: String,
     val price: BigDecimal,
-    @DrawableRes val image: Int
+    val image: String? = null
 )
