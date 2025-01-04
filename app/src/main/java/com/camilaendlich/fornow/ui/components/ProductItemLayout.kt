@@ -1,6 +1,6 @@
 package com.camilaendlich.fornow.ui.components
 
-import androidx.compose.foundation.Image
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.camilaendlich.fornow.R
 import com.camilaendlich.fornow.extensions.toBrazilianCurrency
 import com.camilaendlich.fornow.models.Product
@@ -41,8 +42,7 @@ import java.math.BigDecimal
 fun ProductItemLayout(
     product: Product = Product(
         name = "Cheese Burguer",
-        price = BigDecimal("14.99"),
-        image = ""
+        price = BigDecimal("14.99")
     )
 ) {
     Surface(
@@ -71,17 +71,19 @@ fun ProductItemLayout(
                     )
                     .fillMaxWidth()
             ) {
+                Log.d("ProductItem", "Imagem URL: ${product.image}")
 
-                Image(
-                    // TODO: ajustar imagem do produto
-                    painter = painterResource(R.drawable.ic_launcher_background),
+                AsyncImage(
+                    model = product.image,
                     contentDescription = "Imagem do produto",
                     modifier = Modifier
-                        .offset(y = imageSize/2)
+                        .offset(y = imageSize / 2)
                         .size(imageSize)
                         .clip(shape = CircleShape)
                         .align(Alignment.BottomCenter),
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Crop,
+                    placeholder = painterResource(id = R.drawable.ic_launcher_background),
+                    error = painterResource(id = R.drawable.ic_launcher_foreground)
                 )
             }
 
