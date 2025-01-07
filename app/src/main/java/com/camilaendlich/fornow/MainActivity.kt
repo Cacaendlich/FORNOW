@@ -1,6 +1,7 @@
 package com.camilaendlich.fornow
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,13 +18,17 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            App()
+            App(
+                onClick = { contentSearch ->  Log.e("SEARCH_CLICK", contentSearch)}
+            )
         }
     }
 }
 
 @Composable
-fun App() {
+fun App(
+    onClick: (contentSearch: String) -> Unit
+) {
     FORNOWTheme {
         Scaffold(
             modifier = Modifier
@@ -31,7 +36,8 @@ fun App() {
         ) { innerPadding ->
             MainLayout(
                 modifier = Modifier.padding(innerPadding),
-                sampleSections
+                sections = sampleSections,
+                onClick = onClick
             )
         }
     }

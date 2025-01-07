@@ -13,12 +13,14 @@ import androidx.compose.ui.unit.dp
 import com.camilaendlich.fornow.models.Product
 import com.camilaendlich.fornow.sampledata.sampleSections
 import com.camilaendlich.fornow.ui.components.ProductSectionLayout
+import com.camilaendlich.fornow.ui.components.SearchLayout
 import com.camilaendlich.fornow.ui.theme.FORNOWTheme
 
 @Composable
 fun MainLayout(
     modifier: Modifier = Modifier,
-    sections: Map<String, List<Product>>
+    sections: Map<String, List<Product>>,
+    onClick: (contentSearch: String) -> Unit = {}
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -27,6 +29,8 @@ fun MainLayout(
             .verticalScroll(rememberScrollState())
     ) {
         Spacer(modifier = Modifier)
+        SearchLayout(onClick = onClick)
+
         for (section in sections){
             ProductSectionLayout(
                 name = section.key,
