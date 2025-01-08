@@ -3,6 +3,7 @@ package com.camilaendlich.fornow.ui.components
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
@@ -21,7 +22,6 @@ import com.camilaendlich.fornow.ui.theme.FORNOWTheme
 
 @Composable
 fun SearchLayout(
-    modifier: Modifier = Modifier,
     onClick: (contentSearch: String) -> Unit = {}
 ) {
     var search by remember { mutableStateOf("Procurar") }
@@ -29,7 +29,7 @@ fun SearchLayout(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(all = 16.dp)
+            .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
     ) {
         Row{
             TextField(
@@ -38,6 +38,7 @@ fun SearchLayout(
                     search = contentSearch
                                 },
                 modifier = Modifier
+                    .height(40.dp)
                     .fillMaxWidth(),
                 trailingIcon = {
                     Icon(

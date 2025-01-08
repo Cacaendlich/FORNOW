@@ -1,47 +1,126 @@
 package com.camilaendlich.fornow.ui.screens
 
 import android.content.res.Configuration
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.camilaendlich.fornow.R
 import com.camilaendlich.fornow.models.Product
 import com.camilaendlich.fornow.sampledata.sampleSections
 import com.camilaendlich.fornow.ui.components.ProductSectionLayout
 import com.camilaendlich.fornow.ui.components.SearchLayout
 import com.camilaendlich.fornow.ui.theme.FORNOWTheme
+import com.camilaendlich.fornow.ui.theme.MediumGray
+import com.camilaendlich.fornow.ui.theme.Primary
+import com.camilaendlich.fornow.ui.theme.Secondary
+import com.camilaendlich.fornow.ui.theme.White
 
 @Composable
 fun MainLayout(
     modifier: Modifier = Modifier,
     sections: Map<String, List<Product>>,
-    onClick: (contentSearch: String) -> Unit = {}
+    onClick: (contentSearch: String) -> Unit = {},
+    isDarkTheme: Boolean = false,
+    activateDarkTheme: (Boolean) -> Unit = {}
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
             .background(MaterialTheme.colorScheme.background)
     ) {
-        Spacer(modifier = Modifier)
-        SearchLayout(onClick = onClick)
+        Header(
+            isDarkTheme = isDarkTheme,
+            activateDarkTheme = activateDarkTheme
+        )
 
-        for (section in sections){
-            ProductSectionLayout(
-                name = section.key,
-                productList = section.value
+
+        Column(
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .background(MaterialTheme.colorScheme.background)
+        ) {
+            Spacer(modifier = Modifier)
+
+            SearchLayout(onClick = onClick)
+
+            for (section in sections) {
+                ProductSectionLayout(
+                    name = section.key,
+                    productList = section.value
+                )
+            }
+
+            Spacer(modifier = Modifier)
+        }
+    }
+}
+
+@Composable
+fun Header(
+    isDarkTheme: Boolean = false,
+    activateDarkTheme: (Boolean) -> Unit = {}
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(
+                brush = Brush.horizontalGradient(
+                    colors = listOf(
+                        Primary,
+                        Secondary
+                    )
+                )
+            )
+            .padding(start = 16.dp, end = 16.dp, top = 64.dp, bottom = 8.dp)
+    ) {
+        Column {
+            Text(
+                text = "É PRA JÁ",
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier,
+                color = White
+            )
+
+            Text(
+                text = "DELIVERY",
+                modifier = Modifier,
+                color = MediumGray,
+                fontSize = 12.sp
             )
         }
-        Spacer(modifier = Modifier)
+
+        Image(
+            painter = painterResource(if (isDarkTheme)R.drawable.ic_mode_night else R.drawable.ic_light_mode),
+            contentDescription = null,
+            modifier = Modifier
+                .clickable { activateDarkTheme(!isDarkTheme) },
+            colorFilter = ColorFilter.tint(White)
+        )
     }
 }
 
@@ -52,6 +131,9 @@ private fun MainLayoutPreview() {
     FORNOWTheme(
         dynamicColor = false
     ) {
-        MainLayout(sections = sampleSections)
+        MainLayout(
+            sections = sampleSections,
+
+        )
     }
 }
