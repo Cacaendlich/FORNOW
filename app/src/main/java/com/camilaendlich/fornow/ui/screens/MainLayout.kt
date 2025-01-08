@@ -40,7 +40,6 @@ import com.camilaendlich.fornow.ui.theme.White
 fun MainLayout(
     modifier: Modifier = Modifier,
     sections: Map<String, List<Product>>,
-    onClick: (contentSearch: String) -> Unit = {},
     isDarkTheme: Boolean = false,
     activateDarkTheme: (Boolean) -> Unit = {}
 ) {
@@ -64,7 +63,7 @@ fun MainLayout(
         ) {
             Spacer(modifier = Modifier)
 
-            SearchLayout(onClick = onClick)
+            SearchLayout()
 
             for (section in sections) {
                 ProductSectionLayout(
