@@ -29,7 +29,9 @@ class MainActivity : ComponentActivity() {
 fun App(
     onClick: (contentSearch: String) -> Unit
 ) {
-    FORNOWTheme {
+    FORNOWTheme(
+        dynamicColor = false
+    ) {
         Scaffold(
             modifier = Modifier
                 .fillMaxSize()
