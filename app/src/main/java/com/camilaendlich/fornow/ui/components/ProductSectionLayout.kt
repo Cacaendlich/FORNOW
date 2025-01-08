@@ -27,7 +27,7 @@ fun ProductSectionLayout(
 ){
     Column {
         Text(
-            text = name,
+            text = name.uppercase(),
             modifier = Modifier
                 .padding(horizontal = 16.dp),
             color = MaterialTheme.colorScheme.onSurface,

@@ -2,6 +2,7 @@ package com.camilaendlich.fornow.ui.components
 
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -34,6 +35,7 @@ import com.camilaendlich.fornow.R
 import com.camilaendlich.fornow.extensions.toBrazilianCurrency
 import com.camilaendlich.fornow.models.Product
 import com.camilaendlich.fornow.ui.theme.FORNOWTheme
+import com.camilaendlich.fornow.ui.theme.MediumGray
 import com.camilaendlich.fornow.ui.theme.Primary
 import com.camilaendlich.fornow.ui.theme.Secondary
 import java.math.BigDecimal
@@ -77,10 +79,15 @@ fun ProductItemLayout(
                     model = product.image,
                     contentDescription = "Imagem do produto",
                     modifier = Modifier
-                        .offset(y = imageSize / 2)
+                        .offset(y = imageSize / 3)
                         .size(imageSize)
                         .clip(shape = CircleShape)
-                        .align(Alignment.BottomCenter),
+                        .align(Alignment.BottomCenter)
+                        .border(
+                            width = 1.dp,
+                            color = MediumGray,
+                            shape = CircleShape
+                        ),
                     contentScale = ContentScale.Crop,
                     placeholder = painterResource(id = R.drawable.ic_launcher_background),
                     error = painterResource(id = R.drawable.ic_launcher_foreground)
