@@ -16,6 +16,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -40,6 +42,14 @@ fun MainLayout(
     darkThemeState: MutableState<Boolean>,
     activateDarkTheme: (Boolean) -> Unit = {},
 ) {
+    val searchQuery = remember { mutableStateOf("") }
+
+    val filteredSections = sections.mapValues { entry ->
+        entry.value.filter { product ->
+            product.name.contains(searchQuery.value, ignoreCase = true)
+        }
+    }.filter { it.value.isNotEmpty() }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -61,10 +71,12 @@ fun MainLayout(
             Spacer(modifier = Modifier)
 
             SearchLayout(
+                query = searchQuery.value,
+                onQueryChange = { searchQuery.value = it },
                 isDarkTheme = darkThemeState.value
             )
 
-            for (section in sections) {
+            for (section in filteredSections) {
                 ProductSectionLayout(
                     name = section.key,
                     productList = section.value

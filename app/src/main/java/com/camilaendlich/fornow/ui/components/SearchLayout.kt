@@ -31,6 +31,8 @@ fun SearchLayout(
     onSearch: () -> Unit = {},
     isDarkTheme: Boolean = false
 ) {
+    val keyboardController = androidx.compose.ui.platform.LocalSoftwareKeyboardController.current
+
     TextField(
         value = query,
         onValueChange = onQueryChange,
@@ -49,6 +51,7 @@ fun SearchLayout(
         ),
         keyboardActions = KeyboardActions(
             onSearch = {
+                keyboardController?.hide()
                 onSearch()
             }
         ),
