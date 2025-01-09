@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.camilaendlich.fornow.R
 import com.camilaendlich.fornow.ui.theme.FORNOWTheme
+import com.camilaendlich.fornow.ui.theme.LightGray
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -27,7 +28,8 @@ fun SearchLayout(
     query: String = "",
     onQueryChange: (String) -> Unit = {},
     placeholder: String = "Procurar...",
-    onSearch: () -> Unit = {}
+    onSearch: () -> Unit = {},
+    isDarkTheme: Boolean = false
 ) {
     TextField(
         value = query,
@@ -38,7 +40,7 @@ fun SearchLayout(
         placeholder = {
             Text(
                 text = placeholder,
-                color = MaterialTheme.colorScheme.primary
+                color = if (isDarkTheme) LightGray else MaterialTheme.colorScheme.primary
             )
         },
         singleLine = true,
@@ -59,7 +61,7 @@ fun SearchLayout(
             Icon(
                 painter = painterResource(R.drawable.icon_search),
                 contentDescription = "Search Icon",
-                tint = MaterialTheme.colorScheme.primary
+                tint = if (isDarkTheme) LightGray else MaterialTheme.colorScheme.primary
             )
         }
     )

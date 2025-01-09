@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
 import com.camilaendlich.fornow.sampledata.sampleSections
@@ -24,20 +26,21 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
-            App(
-                isDarkTheme = false
-            )
+            App()
         }
     }
 }
 
 @Composable
-fun App(
-    isDarkTheme: Boolean = false,
-    activateDarkTheme: (Boolean) -> Unit = {}
-) {
+fun App (){
+    val darkThemeState = remember { mutableStateOf(false) }
+
+    val activateDarkTheme: (Boolean) -> Unit = { isDark ->
+        darkThemeState.value = isDark
+    }
+
     FORNOWTheme(
-        darkTheme = isDarkTheme ,
+        darkTheme = darkThemeState.value ,
         dynamicColor = false
     ) {
         Scaffold(
@@ -48,8 +51,8 @@ fun App(
             MainLayout(
                 modifier = Modifier.padding(innerPadding),
                 sections = sampleSections,
-                isDarkTheme = isDarkTheme,
-                activateDarkTheme = activateDarkTheme
+                activateDarkTheme = activateDarkTheme,
+                darkThemeState = darkThemeState
             )
         }
     }
