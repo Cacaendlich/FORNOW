@@ -11,24 +11,11 @@ estando exclusivamente voltado para o frontend.
 
 <h2>Capturas de Tela</h2>
 
-<div style="display: flex; gap: 32px;">
-  <img src="fornow_lightmode.png" alt="Tela em modo claro" width="200"/>
-  <img src="fornow_darkmode.png" alt="Tela em modo escuro" width="200"/>
-  <img src="fornow_search.png" alt="Tela de busca" width="200"/>
+<div style="display: flex; gap: 10px;">
+  <img src="fornow_lightmode.png" alt="Tela em modo claro" width="300"/>
+  <img src="fornow_darkmode.png" alt="Tela em modo escuro" width="300"/>
+  <img src="fornow_search.png" alt="Tela de busca" width="300"/>
 </div>
-
-<h2>Principais Recursos</h2>
-<ul>
-<li>Alternância entre tema claro e escuro.</li>
-<li>Barra de pesquisa funcional para filtrar produtos por nome.</li>
-<li>Componentes estilizados, como:
-<ul>
-<li>Cabeçalho com gradiente e alternador de tema.</li>
-<li>Cartões de produtos com imagens, nome e preço.</li>
-</ul>
-</li>
-<li>Exibição de categorias de produtos organizadas em seções horizontais e verticais.</li>
-</ul>
 
 <h2>Principais Recursos</h2>
 <ul>
