@@ -11,11 +11,11 @@ estando exclusivamente voltado para o frontend.
 
 <h2>Capturas de Tela</h2>
 
-<img src="fornow_lightmode.png" alt="Tela em modo claro" width="400"/>
-
-<img src="fornow_darkmode.png" alt="Tela em modo escuro" width="400"/>
-
-<img src="fornow_search.png" alt="Tela de busca" width="400"/>
+<div style="display: flex; gap: 10px;">
+  <img src="fornow_lightmode.png" alt="Tela em modo claro" width="300"/>
+  <img src="fornow_darkmode.png" alt="Tela em modo escuro" width="300"/>
+  <img src="fornow_search.png" alt="Tela de busca" width="300"/>
+</div>
 
 <h2>Principais Recursos</h2>
 <ul>
