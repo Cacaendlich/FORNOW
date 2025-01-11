@@ -11,11 +11,11 @@ estando exclusivamente voltado para o frontend.
 
 <h2>Capturas de Tela</h2>
 
-![print da tela](fornow_lightmode.png)
+<img src="fornow_lightmode.png" alt="Tela em modo claro" width="400"/>
 
-![print da tela](fornow_darkmode.png)
+<img src="fornow_darkmode.png" alt="Tela em modo escuro" width="400"/>
 
-![print da tela](fornow_search.png)
+<img src="fornow_search.png" alt="Tela de busca" width="400"/>
 
 <h2>Principais Recursos</h2>
 <ul>
