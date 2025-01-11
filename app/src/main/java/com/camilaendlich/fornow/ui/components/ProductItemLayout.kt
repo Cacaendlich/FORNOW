@@ -1,7 +1,8 @@
-package com.camilaendlich.fornow.view
+package com.camilaendlich.fornow.ui.components
 
-import androidx.compose.foundation.Image
+import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,7 +23,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -29,20 +30,21 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.camilaendlich.fornow.R
 import com.camilaendlich.fornow.extensions.toBrazilianCurrency
-import com.camilaendlich.fornow.models.ProductModel
+import com.camilaendlich.fornow.models.Product
 import com.camilaendlich.fornow.ui.theme.FORNOWTheme
+import com.camilaendlich.fornow.ui.theme.MediumGray
 import com.camilaendlich.fornow.ui.theme.Primary
 import com.camilaendlich.fornow.ui.theme.Secondary
 import java.math.BigDecimal
 
 @Composable
 fun ProductItemLayout(
-    product: ProductModel = ProductModel(
+    product: Product = Product(
         name = "Cheese Burguer",
-        price = BigDecimal("14.99"),
-        image = R.drawable.ic_launcher_background
+        price = BigDecimal("14.99")
     )
 ) {
     Surface(
@@ -53,9 +55,9 @@ fun ProductItemLayout(
 
         Column(
             modifier = Modifier
-                .height(250.dp)
-                .width(200.dp)
-                .background(Color.White)
+                .height(220.dp)
+                .width(160.dp)
+                .background(MaterialTheme.colorScheme.surface)
         ) {
 
             Box(
@@ -71,16 +73,24 @@ fun ProductItemLayout(
                     )
                     .fillMaxWidth()
             ) {
+                Log.d("ProductItem", "Imagem URL: ${product.image}")
 
-                Image(
-                    painter = painterResource(product.image),
+                AsyncImage(
+                    model = product.image,
                     contentDescription = "Imagem do produto",
                     modifier = Modifier
-                        .offset(y = imageSize/2)
+                        .offset(y = imageSize / 3)
                         .size(imageSize)
                         .clip(shape = CircleShape)
-                        .align(Alignment.BottomCenter),
-                    contentScale = ContentScale.Crop
+                        .align(Alignment.BottomCenter)
+                        .border(
+                            width = 1.dp,
+                            color = MediumGray,
+                            shape = CircleShape
+                        ),
+                    contentScale = ContentScale.Crop,
+                    placeholder = painterResource(id = R.drawable.ic_launcher_background),
+                    error = painterResource(id = R.drawable.ic_launcher_foreground)
                 )
             }
 
@@ -88,10 +98,11 @@ fun ProductItemLayout(
 
             Column(
                 modifier = Modifier
-                    .padding(all = 16.dp)
+                    .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
             ) {
                 Text(
                     text = product.name,
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontSize = 18.sp,
                     fontWeight = FontWeight(700),
                     maxLines = 2,
