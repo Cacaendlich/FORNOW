@@ -10,7 +10,9 @@ estando exclusivamente voltado para o frontend.
 </p>
 
 <h2>Capturas de Tela</h2>
-
+![print da tela](fornow_lightmode.png)
+![print da tela](fornow_darkmode.png)
+![print da tela](fornow_search.png)
 
 <h2>Principais Recursos</h2>
 <ul>
