@@ -11,7 +11,7 @@ estando exclusivamente voltado para o frontend.
 
 <h2>Capturas de Tela</h2>
 
-<div style="display: flex; gap: 16px;">
+<div style="display: flex; gap: 32px;">
   <img src="fornow_lightmode.png" alt="Tela em modo claro" width="200"/>
   <img src="fornow_darkmode.png" alt="Tela em modo escuro" width="200"/>
   <img src="fornow_search.png" alt="Tela de busca" width="200"/>
